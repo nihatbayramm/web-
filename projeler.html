@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projelerimiz</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+        }
+
+        .project-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        .project-row img {
+            width: 45%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .project-description {
+            width: 50%;
+            padding-left: 20px;
+        }
+
+        .project-description p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .project-row {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .project-row img, .project-description {
+                width: 100%;
+                padding-left: 0;
+            }
+
+            .project-description {
+                padding-top: 20px;
+            }
+        }
+
+        .project-row {
+            background-color: #1a1a1a;
+        }
+
+        .project-description p {
+            text-align: center;
+            color: #0c0101;
+            font-size: 25px;
+            background-color: yellow;
+            border: 2px solid white;
+            padding: 10px;
+            border-radius: 15%;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .lightbox img {
+            transition: transform 0.2s;
+            cursor: grab;
+            max-width: none; 
+            max-height: none; 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 5px 10px;
+            z-index: 11;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .zoom-btn {
+            padding: 10px 15px;
+            background-color: white;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .zoom-btn:hover {
+            background-color: #f0f0f0;
+        }
+        .aa{
+            content: none;
+            border: 2.5px solid brown;
+            border-radius: 5px;
+
+            
+        }
+        .y{
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #000102;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        border: 5px solid yellow;
+        }
+        .y:hover{
+            background-color: #dfdb17;
+            color: #000102;
+            border: 5px solid rgb(5, 5, 4) ;
+            font-size: 25px;
+        }
+
+    </style>
+</head>
+<body>
+<header class="bag">
+    <div class="x">
+<a href="anasayfa.html" class="y">ANASAYFA</a>
+ <a href="iletisim.html" class="y">İLETİŞİM</a>
+</header>
+    <h1>Projelerimiz</h1>
+
+    <div id="lightbox" class="lightbox">
+        <span id="close-btn" class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Büyütülmüş Görsel" draggable="false">
+            <div class="zoom-controls">
+                <button id="zoom-in" class="zoom-btn">+</button>
+                <button id="zoom-out" class="zoom-btn">-</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-row">
+        <img src="proje1.jpg" alt="Proje 1" onclick="openLightbox(this.src)">
+        <div class="project-description">
+            <p>Bu projede modern mimarinin estetik çizgilerini ve fonksiyonel detayları bir araya getirdik. Yapının dış cephesinde kullanılan doğal tuğla ve antrasit kaplama kombinasyonu, binaya hem çağdaş hem de sıcak bir görünüm kazandırıyor. Yatay ve dikey çizgilerle tasarlanan cephe elemanları, binanın karakteristik ve sofistike bir hava kazanmasını sağlıyor. Ayrıca, izolasyon malzemeleri ve cephe kaplamaları enerji verimliliği ön planda tutularak seçilmiştir.</p>
+        </div>
+    </div>
+
+    <!-- Proje 2 -->
+    <div class="project-row">
+        <img src="proje23.jpg" alt="Proje 2" onclick="openLightbox(this.src)">
+        <div class="project-description">
+            <p>Bu yapıda, sanayi ve ticari alanlar için modern bir mimari anlayışla işlevsellik ön planda tutulmuştur. Dış cephede kullanılan dayanıklı malzemeler, uzun ömürlü ve çevre koşullarına karşı dirençli bir yapı oluşturulmasını sağlamıştır. Geniş cam yüzeyler, iç mekanda doğal ışık akışını maksimize ederken, modern ve ferah bir atmosfer yaratıyor.</p>
+        </div>
+    </div>
+
+    <!-- Proje 3 -->
+    <div class="project-row">
+        <img src="proje3.jpg" alt="Proje 3" onclick="openLightbox(this.src)">
+        <div class="project-description">
+            <p>Bu yüksek katlı yapı projesi, modern şehircilik ve kentsel dönüşüm ilkeleri doğrultusunda inşa edilmektedir. Cephede kullanılan iskele sistemi, güvenli ve hızlı bir çalışma süreci sağlarken, projenin geniş ölçekli yapısı, estetik ve işlevselliği bir arada sunmayı amaçlamaktadır. Projenin dış cephe kaplamasında ısı ve ses yalıtımını artırıcı malzemeler tercih edilerek, enerji verimliliği ön planda tutulmuştur. Çevreye duyarlı bir tasarım anlayışıyla hayata geçirilen bu yapı, uzun ömürlü ve dayanıklı bir konut alanı oluşturmayı hedeflemektedir.</p>
+        </div>
+    </div>
+
+    <!-- Proje 4 -->
+    <div class="project-row">
+        <img src="proje4.jpg" alt="Proje 4" onclick="openLightbox(this.src)">
+        <div class="project-description">
+            <p>Bu modern ve minimalist tasarıma sahip bina, geniş cam cepheleri sayesinde doğal ışık alımı maksimum seviyeye çıkarılırken, aynı zamanda şehir manzarasının keyfini çıkarmak mümkün olacak. Akıllı bina sistemleri sayesinde enerji verimliliği sağlanacak ve çalışanlara konforlu bir çalışma ortamı sunulacak. Projemiz, hem şehir siluetine modern bir dokunuş katacak hem de iş dünyasına yeni bir soluk getirecek.</p>
+        </div>
+    </div>
+
+    <!-- Proje 5 -->
+    <div class="project-row">
+        <img src="proje5.jpg" alt="Proje 5" onclick="openLightbox(this.src)">
+        <div class="project-description">
+            <p>Bu projemizin dış cephesinde, dayanıklı ve sürdürülebilir malzemeler tercih edilmiştir. Antrasit gri renkli kompozit paneller, cam ve doğal taş kombinasyonu kullanılarak modern bir görünüm elde edilmiştir.</p>
+        </div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.getElementById('close-btn');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+
+        let zoomLevel = 1;
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            zoomLevel = 1;
+            lightboxImg.style.transform = `scale(${zoomLevel}) translate(-50%, -50%)`;
+            lightbox.classList.add('active');
+        }
+
+        closeBtn.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target !== lightboxImg && !document.querySelector('.zoom-controls').contains(e.target)) {
+                lightbox.classList.remove('active');
+            }
+        });
+
+        zoomInBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); 
+            zoomLevel += 0.1;
+            lightboxImg.style.transform = `scale(${zoomLevel}) translate(-50%, -50%)`;
+        });
+
+        zoomOutBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); 
+            if (zoomLevel > 1) {
+                zoomLevel -= 0.1;
+                lightboxImg.style.transform = `scale(${zoomLevel}) translate(-50%, -50%)`;
+            }
+        });
+
+        // Drag functionality
+        lightboxImg.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialX = lightboxImg.offsetLeft;
+            initialY = lightboxImg.offsetTop;
+            lightboxImg.style.cursor = 'grabbing'; /
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            lightboxImg.style.cursor = 'grab'; 
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                lightboxImg.style.left = `${initialX + dx}px`;
+                lightboxImg.style.top = `${initialY + dy}px`;
+                lightboxImg.style.transform = `scale(${zoomLevel}) translate(-50%, -50%)`; 
+            }
+        });
+    </script>
+
+</body>
+</html>
